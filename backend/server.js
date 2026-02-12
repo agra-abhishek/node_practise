@@ -17,11 +17,15 @@ connectDB();
 
 const allowedOrigins = [
   "http://localhost:5173",
-  "https://node-practise-78.onrender.com"
+  "https://node-practise-78.onrender.com",
+  "https://node-practise-799.onrender.com"
 ];
 
 app.use(cors({
-  origin: "http://localhost:5173", // frontend URL
+  origin: ["http://localhost:5173",  "https://node-practise-78.onrender.com",
+  "https://node-practise-799.onrender.com"],
+  
+            // frontend URL
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
   allowedHeaders: ["Content-Type", "Authorization"],
   credentials: true // if you use cookies or auth
