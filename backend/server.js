@@ -10,7 +10,7 @@ const authRoutes = require('./routes/auth.routes')
 dotenv.config();
 const app = express();
 // ENV VARIABLES
-const PORT = process.env.PORT || 4000;
+const PORT = process.env.PORT || 5000;
 const MONGO_URI = process.env.MONGO_URI;
 // MongoDB connection
 connectDB();
@@ -18,7 +18,7 @@ connectDB();
 app.use(cors({
   origin: "http://localhost:5173",
   credentials: true
-}));
+}))
 
 app.use(express.json());
 
