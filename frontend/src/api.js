@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const API = axios.create({
-  baseURL: "http://localhost:5000/api",
+  baseURL: "https://node-practise-bxq7.onrender.comhttp://localhost:5000/api",
   withCredentials: true, // 🔥 important for cookies
 });
 
