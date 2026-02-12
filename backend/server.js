@@ -17,7 +17,7 @@ connectDB();
 
 const allowedOrigins = [
   "http://localhost:5173",
-  "https://node-practise-1-p0rw.onrender.com"
+  "https://node-practise-78.onrender.com"
 ];
 
 app.use(cors({
