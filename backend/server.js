@@ -15,16 +15,13 @@ const MONGO_URI = process.env.MONGO_URI;
 // MongoDB connection
 connectDB();
 app.use(cors({
-  origin: "https://node-practise-101.onrender.com", // frontend URL
+  origin: "process.env.FRONTEND_URL", // frontend URL
   credentials: true,
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
   allowedHeaders: ["Content-Type", "Authorization"],
 }));
 
-app.options("*", cors({
-  origin: "https://node-practise-101.onrender.com",
-  credentials: true,
-}));
+
 
 app.use(express.json());
 
