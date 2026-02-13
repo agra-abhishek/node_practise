@@ -6,7 +6,7 @@ export default function Register() {
     name: "",
     email: "",
     password: "",
-    dateOfBirth: "",
+    age: "",
   });
 
   const handleChange = (e) =>
@@ -26,7 +26,7 @@ export default function Register() {
       >
         <h2 className="text-2xl font-bold mb-4 text-center">Register</h2>
 
-        {["name", "email", "password", "dateOfBirth"].map((field) => (
+        {["name", "email", "password", "age"].map((field) => (
           <input
             key={field}
             type={field === "password" ? "password" : "text"}

@@ -24,7 +24,7 @@ export default function Info() {
     <div className="text-center mt-10">
       <h1 className="text-3xl font-bold">Welcome {user.name}</h1>
       <p>Email: {user.email}</p>
-      <p>DOB: {new Date(user.dateOfBirth).toDateString()}</p>
+      <p>AGE: {new Date(user.age).toDateString()}</p>
     </div>
   );
 }

@@ -5,13 +5,13 @@ const { hashPassword } = require("../utils/password");
 // Crete A user for POST
 const createUser = async (req, res) => {
     try {
-        const { name, email, password, dateOfBirth } = req.body;
+        const { name, email, password, age } = req.body;
         const hashedPassword = await hashPassword(password);
         const user = await User.create({
             name,
             email,
             password: hashedPassword,
-            dateOfBirth
+           age
         });
         console.log("BODY:", req.body);
         res.status(201).json({
