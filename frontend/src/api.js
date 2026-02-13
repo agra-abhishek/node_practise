@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const API = axios.create({
-  baseURL: "http://localhost:5000/api",
+  baseURL: "https://mycurd-wfvv.onrender.com/api",
   withCredentials: true, // 🔥 important for cookies
 });
 
