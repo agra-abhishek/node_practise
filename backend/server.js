@@ -22,6 +22,18 @@ app.use(cors({
 }));
 
 
+app.use(session({
+  name: "session_id",            // optional session cookie name
+  secret: process.env.SESSION_SECRET,     // required
+  resave: false,                 // recommended
+  saveUninitialized: false,      // recommended
+  cookie: {
+    httpOnly: true,              // not accessible via JS
+    secure: true,                // must be true if SameSite=None (HTTPS)
+    sameSite: "none",            // allows cross-site
+    maxAge: 24 * 60 * 60 * 1000  // 1 day
+  }
+}));
 
 app.use(express.json());
 
