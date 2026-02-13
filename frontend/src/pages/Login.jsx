@@ -11,8 +11,14 @@ export default function Login() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await API.post("/auth/login", form);
-    navigate("/info");
+    try {
+      // ✅ Make sure cookies are sent with the request
+      await API.post("/auth/login", form, { withCredentials: true });
+      navigate("/info");
+    } catch (err) {
+      console.error(err.response?.data || err);
+      alert(err.response?.data?.message || "Login failed");
+    }
   };
 
   return (
