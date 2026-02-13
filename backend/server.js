@@ -10,25 +10,39 @@ const authRoutes = require('./routes/auth.routes');
 
 dotenv.config();
 const app = express();
-
 const PORT = process.env.PORT || 5000;
 
 // MongoDB connection
 connectDB();
 
-// ✅ CORS configuration - this SINGLE line handles everything!
+// ✅ CORS configuration
+const allowedOrigins = [
+  'http://localhost:5173',
+  'https://newnode-pxjc.onrender.com'
+];
+
 app.use(cors({
-  origin:   origin: "*,
-  methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
+  origin: function(origin, callback) {
+    if (!origin) return callback(null, true); // allow non-browser requests
+    if (allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('CORS not allowed'));
+    }
+  },
+  methods: ['GET','POST','PUT','PATCH','DELETE','OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization'],
   credentials: true
 }));
 
-// ❌ NO additional app.options() or app.all() lines needed
+// Handle preflight requests (important!)
+app.options('*', cors());
 
+// Body parsing & cookies
 app.use(express.json());
 app.use(cookieParser());
 
+// Routes
 app.use("/api/auth", authRoutes);
 app.use("/api/users", userRoutes);
 
